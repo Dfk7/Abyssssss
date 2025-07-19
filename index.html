@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abyss - Roblox Scripts</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #050505;
+    color: #eee;
+    scroll-behavior: smooth;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #080808;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #008cff;
+  }
+  header h1 {
+    font-size: 30px;
+    color: #008cff;
+    text-shadow: 0 0 8px #008cff;
+  }
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+  nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: #008cff;
+  }
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    width: 30px;
+    height: 4px;
+    background: #eee;
+    margin: 5px 0;
+    border-radius: 2px;
+  }
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+    background: linear-gradient(145deg, #070707, #000000);
+  }
+  .hero h2 {
+    font-size: 60px;
+    margin-bottom: 15px;
+    color: #008cff;
+    text-shadow: 0 0 20px #008cff;
+  }
+  .hero p {
+    font-size: 22px;
+    max-width: 700px;
+    margin-bottom: 25px;
+    color: #aaa;
+  }
+  .btn {
+    padding: 15px 35px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  .btn-download {
+    background: #008cff;
+    color: #000;
+    box-shadow: 0 0 10px #008cffaa;
+  }
+  .btn-discord {
+    background: #5865f2;
+    color: white;
+    box-shadow: 0 0 10px #5865f2aa;
+  }
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  section {
+    padding: 80px 20px;
+    text-align: center;
+  }
+  h2.section-title {
+    font-size: 38px;
+    margin-bottom: 30px;
+    color: #008cff;
+    text-shadow: 0 0 10px #008cff;
+  }
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+  }
+  .card {
+    background: #111111;
+    width: 320px;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 20px #008cff33;
+    transition: box-shadow 0.3s;
+  }
+  .card:hover {
+    box-shadow: 0 0 40px #008cff88;
+  }
+  .card h3 {
+    color: #008cff;
+    margin-bottom: 15px;
+  }
+  .card iframe {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    border: none;
+  }
+  footer {
+    background: #080808;
+    text-align: center;
+    padding: 15px;
+    color: #555;
+    border-top: 2px solid #008cff;
+  }
+  .faq-box {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 25px;
+    background: #111111;
+    border-radius: 12px;
+    box-shadow: 0 0 15px #008cff55;
+  }
+  .faq-box p {
+    margin-bottom: 18px;
+    font-size: 17px;
+    line-height: 1.4;
+  }
+  .script-btn {
+    background: #008cff;
+    color: #000;
+    padding: 12px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #008cffaa;
+    transition: background-color 0.3s;
+  }
+  .script-btn:hover {
+    background: #00aaff;
+  }
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      background: #181818;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      width: 180px;
+    }
+    nav.active {
+      display: flex;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Abyss</h1>
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <nav>
+    <a href="#home">Accueil</a>
+    <a href="#executors">Executors</a>
+    <a href="#scripts">Scripts</a>
+    <a href="#tutos">Tutoriels</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <h2>Abyss Script Hub</h2>
+  <p>Scripts Roblox , executors fiables et tutoriels. Gratuit et sans virus.</p>
+  <a href="https://discord.gg/HW5KZzmB78"><button class="btn btn-discord">Rejoindre Discord</button></a>
+</div>
+
+<section id="executors">
+  <h2 class="section-title">Executors</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Delta</h3>
+      <p>Executor rapide et fiable.</p>
+      <a href="https://delta-executor.com" target="_blank" rel="noopener"><button class="btn btn-download">Télécharger</button></a>
+    </div>
+    <div class="card">
+      <h3>Synapse X</h3>
+      <p>Le plus puissant du marché.</p>
+      <a href="https://synapsex.co" target="_blank" rel="noopener"><button class="btn btn-download">Télécharger</button></a>
+    </div>
+    <div class="card">
+      <h3>KRNL</h3>
+      <p>Gratuit et performant.</p>
+      <a href="https://krnl.place" target="_blank" rel="noopener"><button class="btn btn-download">Télécharger</button></a>
+    </div>
+  </div>
+</section>
+
+<section id="scripts">
+  <h2 class="section-title">Scripts Abyss</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Aimbot</h3>
+      <p>Un vrai script aimbot fiable :</p>
+      <button class="script-btn" onclick="copyText(`loadstring(game:HttpGet('https://raw.githubusercontent.com/verifyscripts/aimbot/main/script.lua'))()`)">Copier le script</button>
+    </div>
+    <div class="card">
+      <h3>ESP</h3>
+      <p>ESP complet & stable :</p>
+      <button class="script-btn" onclick="copyText(`loadstring(game:HttpGet('https://raw.githubusercontent.com/verifyscripts/esp/main/script.lua'))()`)">Copier le script</button>
+    </div>
+  </div>
+</section>
+
+<section id="tutos">
+  <h2 class="section-title">Tutoriels</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Installer Delta sur Android</h3>
+      <iframe src="https://www.youtube.com/embed/BV0p_p6p15o" allowfullscreen></iframe>
+    </div>
+    <div class="card">
+      <h3>Installer Delta sur iPhone</h3>
+      <iframe src="https://www.youtube.com/embed/tzs-lf6EwVE" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2 class="section-title">FAQ</h2>
+  <div class="faq-box">
+    <p><b>Abyss est-il gratuit ?</b><br />✅ Oui, 100% gratuit.</p>
+    <p><b>Sécurisé ?</b><br />✅ Aucun virus, scripts testés.</p>
+    <p><b>Comment débuter ?</b><br />✅ Rejoins notre Discord pour de l'aide.</p>
+  </div>
+</section>
+
+<footer>
+  © 2025 Abyss. Tous droits réservés.
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.querySelector('nav').classList.toggle('active');
+  }
+  function copyText(text) {
+    navigator.clipboard.writeText(text);
+    alert('Script copié dans le presse-papier !');
+  }
+</script>
+</body>
+</html>
